@@ -22,20 +22,20 @@ def start_publish
   log_info = STDIN.gets.chomp()
   
   handler_git_pod_repo(new_version, log_info)
-  puts ">>>>>>>>>  仓库发布完毕，准备更新spec仓库"
+  puts ">>>>>>>>>  #{folder_name} 仓库发布完毕，准备更新spec仓库"
   cp_result = copy_spec_file_to_repo(folder_name, new_version, spec_file_path)
   unless cp_result
     puts ">>>>>>>>> error: 本地没有spec 仓库，已放弃更新"
     return
   end
-  puts ">>>>>>>>> 开始提交spec仓库"
+  puts ">>>>>>>>> spec 仓库更新完毕， 开始提交spec仓库"
   spec_submit_result = handler_git_specs_repo(folder_name, new_version)
   if spec_submit_result
     puts "#{folder_name}版本已更新至 #{new_version}, 请在repo repo update 之后更新pod版本号，拉取最新代码"
   end
 end
 
-def handler_git_specs_repo(proj_name)
+def handler_git_specs_repo(proj_name, new_version)
   repo_exist = File.exist?($specs_repo_path)
   is_directory = File.directory?($specs_repo_path)
   unless repo_exist && is_directory
