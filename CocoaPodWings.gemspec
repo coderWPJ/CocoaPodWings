@@ -3,7 +3,7 @@ lib = File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |spec|
   spec.name          = "CocoaPodWings"
-  spec.version       = "1.0.0"
+  spec.version       = "0.0.2"
   spec.authors       = "Wupengju"
   spec.email         = "331321408@qq.com"
 
