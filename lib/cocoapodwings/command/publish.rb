@@ -39,7 +39,7 @@ def handler_git_specs_repo(proj_name, new_version)
   repo_exist = File.exist?($specs_repo_path)
   is_directory = File.directory?($specs_repo_path)
   unless repo_exist && is_directory
-    puts '本地没有spec 仓库, 提前结束'
+    puts "#{$specs_repo_path}本地没有spec 仓库, 提前结束"
     return false
   end
   Dir.chdir($specs_repo_path)
@@ -55,7 +55,7 @@ def copy_spec_file_to_repo(folder_name, new_version, spec_file_path)
   repo_exist = File.exist?($specs_repo_path)
   is_directory = File.directory?($specs_repo_path)
   unless repo_exist && is_directory
-    puts '本地没有spec 仓库, 提前结束'
+    puts "#{$specs_repo_path}本地没有spec 仓库, 提前结束"
     return false
   end
   repo_dir_path = File.join($specs_repo_path, folder_name)
